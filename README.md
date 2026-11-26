@@ -10,7 +10,7 @@ Not started. This repository holds the plan and its rules; the first code waits 
 
 ## Where it comes from
 
-The plan is flyingrobots/wesley#872, transferred here; flyingrobots/wesley#586 decided that Zod lives outside Wesley. Its first consumer is School (flyingrobots/school#33).
+The plan is issue #1 (transferred from flyingrobots/wesley#872). flyingrobots/wesley#586 decided that Zod lives outside Wesley. Its first consumer is School (flyingrobots/school#33).
 
 ## How it generates code
 
