@@ -6,7 +6,7 @@ Wesley compiles GraphQL SDL into an intermediate representation (IR), and does n
 
 ## Status
 
-Not started. This repository holds the plan and its rules; the first code waits on the versioned IR contract (flyingrobots/wesley#881).
+Not started, deliberately. Parley's plan (flyingrobots/parley#116) needs nothing from this target: Parley's readers validate with JSON Schema, and its TypeScript types come from [wesley-parley](https://github.com/flyingrobots/wesley-parley) through [wesley-typescript](https://github.com/flyingrobots/wesley-typescript). The first consumer is School (flyingrobots/school#33); issue #1 is the plan. When work starts it builds on wesley-typescript's swc syntax crate (`crates/wesley-typescript-syntax`), which already gives the tree and printer this target needs.
 
 ## Where it comes from
 
