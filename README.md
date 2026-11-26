@@ -2,11 +2,11 @@
 
 A [Wesley](https://github.com/flyingrobots/wesley) target that emits Zod 4 schemas, one per type, whose `z.infer` equals the wesley-typescript type for the same IR.
 
-Wesley compiles GraphQL SDL into a versioned intermediate representation (IR). It does not emit code itself: every output language is its own repository, run by Wesley as an external target over the IR. The decision is recorded in flyingrobots/parley#116, and the move of the emitters out of Wesley is flyingrobots/wesley#882.
+Wesley compiles GraphQL SDL into an intermediate representation (IR), and does nothing else: it attaches no meaning to any directive and runs no targets. Every output language is its own repository, a standalone program and library that reads the IR (`wesley schema lower --json`). This one is a **generic** target: it understands no directives and emits plain GraphQL, and it is the language tooling other targets (such as [wesley-parley](https://github.com/flyingrobots/wesley-parley)) render through. The decisions are recorded in flyingrobots/parley#116 and flyingrobots/wesley#882.
 
 ## Status
 
-Not started. This repository holds the plan and its rules; the first code waits on the versioned IR contract (flyingrobots/wesley#881) and on Wesley running external targets (flyingrobots/wesley#880).
+Not started. This repository holds the plan and its rules; the first code waits on the versioned IR contract (flyingrobots/wesley#881).
 
 ## Where it comes from
 
@@ -18,9 +18,9 @@ The output is built as a syntax tree of the target language and printed by that 
 
 | Concern | Choice |
 | --- | --- |
-| Written in | TypeScript, run with Bun |
-| Syntax tree | the TypeScript compiler API (`ts.factory`) |
-| Printer | `ts.createPrinter` |
+| Written in | Rust (stable) |
+| Syntax tree | `oxc_ast`, through the TypeScript tooling of [wesley-typescript](https://github.com/flyingrobots/wesley-typescript) |
+| Printer | `oxc_codegen` |
 | Checked by | the TypeScript compiler on every golden file, including a check that each `z.infer` is assignable both ways to the wesley-typescript type |
 
 Rules every change keeps:
